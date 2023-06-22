@@ -20,8 +20,11 @@ public class Ship extends ObjectAttribute {
     private ImageIcon imageIconRight = null;
     private ImageIcon imageIconDestroy = null;
 
+    public static String move = null;/*static, left, right*/
+
     public Ship() {
         this.component = new JLabel();
+        move = "static";
 
         this.dimension[0] = 40;
         this.dimension[1] = 60;
@@ -40,6 +43,16 @@ public class Ship extends ObjectAttribute {
 
         this.component.setBounds(this.position[0], this.position[1], this.dimension[0], this.dimension[1]);
         this.component.setIcon(imageIconFront);
+    }
+
+    public void moveLeft() {
+        position[0] -= 5;
+        component.setBounds(position[0], position[1], dimension[0], dimension[1]);
+    }
+    
+    public void moveRight() {
+        position[0] += 5;
+        component.setBounds(position[0], position[1], dimension[0], dimension[1]);
     }
 
     public void setImageFront() {

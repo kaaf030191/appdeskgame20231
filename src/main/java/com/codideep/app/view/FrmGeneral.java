@@ -4,6 +4,8 @@
  */
 package com.codideep.app.view;
 
+import com.codideep.app.object.Ship;
+
 /**
  *
  * @author KAAF0
@@ -34,6 +36,9 @@ public class FrmGeneral extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -51,8 +56,27 @@ public class FrmGeneral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        this.getComponent(0).setBounds(this.getComponent(0).getBounds().x + 2, this.getComponent(0).getBounds().y, this.getComponent(0).getSize().width, this.getComponent(0).getSize().height);
+        switch (evt.getKeyCode()) {
+            case 37:
+                Ship.move = "left";
+
+                break;
+
+            case 39:
+                Ship.move = "right";
+
+                break;
+
+            default:
+                Ship.move = "static";
+
+                break;
+        }
     }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        Ship.move = "static";
+    }//GEN-LAST:event_formKeyReleased
 
     /**
      * @param args the command line arguments
