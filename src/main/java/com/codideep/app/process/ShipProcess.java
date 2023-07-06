@@ -28,6 +28,8 @@ public class ShipProcess extends Thread {
         while (true) {
             switch (Ship.move) {
                 case "static":
+                    ship.setImageFront();
+                    
                     break;
 
                 case "left":
@@ -42,7 +44,7 @@ public class ShipProcess extends Thread {
             }
 
             try {
-                sleep(10);
+                sleep(ship.delay);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ShipProcess.class.getName()).log(Level.SEVERE, null, ex);
             }

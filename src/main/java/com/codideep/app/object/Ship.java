@@ -28,46 +28,54 @@ public class Ship extends ObjectAttribute {
 
         this.dimension[0] = 40;
         this.dimension[1] = 60;
+        
+        delay = 7;
 
         java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         this.position[0] = (screenSize.width / 2) - (this.dimension[0] / 2);
         this.position[1] = screenSize.height - (this.dimension[1] + 50);
 
-        imageIconFront = new ImageIcon("D:\\Downloads\\plane.png");
-        imageIconLeft = new ImageIcon("");
-        imageIconRight = new ImageIcon("");
+        imageIconFront = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\ship.png");
+        imageIconLeft = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\shipLeft.png");
+        imageIconRight = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\shipRight.png");
         imageIconDestroy = new ImageIcon("");
 
         imageIconFront = new ImageIcon(imageIconFront.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
+        imageIconLeft = new ImageIcon(imageIconLeft.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
+        imageIconRight = new ImageIcon(imageIconRight.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
 
         this.component.setBounds(this.position[0], this.position[1], this.dimension[0], this.dimension[1]);
+        this.component.setIcon(imageIconFront);
+    }
+    
+    private void setImageLeft() {
+        this.component.setIcon(imageIconLeft);
+    }
+
+    private void setImageRight() {
+        this.component.setIcon(imageIconRight);
+    }
+
+    private void setImageDestroy() {
+        this.component.setIcon(imageIconDestroy);
+    }
+    
+    public void setImageFront() {
         this.component.setIcon(imageIconFront);
     }
 
     public void moveLeft() {
         position[0] -= 5;
         component.setBounds(position[0], position[1], dimension[0], dimension[1]);
+        
+        setImageLeft();
     }
     
     public void moveRight() {
         position[0] += 5;
         component.setBounds(position[0], position[1], dimension[0], dimension[1]);
-    }
-
-    public void setImageFront() {
-        this.component.setIcon(imageIconFront);
-    }
-
-    public void setImageLeft() {
-        this.component.setIcon(imageIconLeft);
-    }
-
-    public void setImageRight() {
-        this.component.setIcon(imageIconRight);
-    }
-
-    public void setImageDestroy() {
-        this.component.setIcon(imageIconDestroy);
+        
+        setImageRight();
     }
 }

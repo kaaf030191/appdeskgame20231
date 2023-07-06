@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 public abstract class ObjectAttribute {
 
     public JLabel component = null;
-    public int speed = 0;
+    public int delay = 0;
     public int[] position = {0, 0};
     public int[] dimension = {0, 0};
 }

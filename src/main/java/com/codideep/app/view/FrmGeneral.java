@@ -5,6 +5,9 @@
 package com.codideep.app.view;
 
 import com.codideep.app.object.Ship;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,8 +17,9 @@ public class FrmGeneral extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmGeneral
+     * @throws java.io.IOException
      */
-    public FrmGeneral() {
+    public FrmGeneral() throws IOException {
         initComponents();
     }
 
@@ -108,7 +112,11 @@ public class FrmGeneral extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmGeneral().setVisible(true);
+                try {
+                    new FrmGeneral().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(FrmGeneral.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

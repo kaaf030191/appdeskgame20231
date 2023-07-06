@@ -7,7 +7,13 @@ package com.codideep.app.main;
 import com.codideep.app.object.Ship;
 import com.codideep.app.process.ShipProcess;
 import com.codideep.app.view.FrmGeneral;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -15,10 +21,21 @@ import javax.swing.JFrame;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        
+        int screenWidth = toolkit.getScreenSize().width;
+        int screenHeight = toolkit.getScreenSize().height;
+        
         FrmGeneral frmGeneral = new FrmGeneral();
 
         frmGeneral.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        ImageIcon backgroundImage = new ImageIcon(ImageIO.read(new File("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\fondo.jpg")));
+        
+        backgroundImage = new ImageIcon(backgroundImage.getImage().getScaledInstance(screenWidth, screenHeight, java.awt.Image.SCALE_SMOOTH));
+        
+        frmGeneral.setContentPane(new JLabel(backgroundImage));
 
         frmGeneral.setVisible(true);
 
