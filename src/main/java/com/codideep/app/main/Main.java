@@ -6,6 +6,7 @@ package com.codideep.app.main;
 
 import com.codideep.app.object.Asteroid;
 import com.codideep.app.object.Ship;
+import com.codideep.app.process.CreateProcess;
 import com.codideep.app.process.ShipProcess;
 import com.codideep.app.view.FrmGeneral;
 import java.awt.Toolkit;
@@ -44,18 +45,10 @@ public class Main {
 
         frmGeneral.add(ship.component);
 
-        for (int i = 0; i < 20; i++) {
-            Asteroid asteroid = new Asteroid();
-            
-            frmGeneral.add(asteroid.component);
-            
-            Thread thread = new Thread(asteroid);
-            
-            thread.start();
-        }
-
         frmGeneral.repaint();
 
         new ShipProcess(ship).start();
+        
+        new CreateProcess(frmGeneral).start();
     }
 }
