@@ -14,6 +14,4 @@ public abstract class ObjectAttribute {
 
     public JLabel component = null;
     public int delay = 0;
-    public int[] position = {0, 0};
-    public int[] dimension = {0, 0};
 }

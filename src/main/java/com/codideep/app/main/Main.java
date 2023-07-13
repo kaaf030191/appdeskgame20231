@@ -5,6 +5,7 @@
 package com.codideep.app.main;
 
 import com.codideep.app.object.Asteroid;
+import com.codideep.app.object.Projectil;
 import com.codideep.app.object.Ship;
 import com.codideep.app.process.CreateProcess;
 import com.codideep.app.process.ShipProcess;

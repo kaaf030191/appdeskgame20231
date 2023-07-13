@@ -15,6 +15,9 @@ import javax.swing.JLabel;
  */
 public class Ship extends ObjectAttribute {
 
+    public static int[] position = {0, 0};
+    public static int[] dimension = {0, 0};
+    
     private ImageIcon imageIconFront = null;
     private ImageIcon imageIconLeft = null;
     private ImageIcon imageIconRight = null;
@@ -26,26 +29,26 @@ public class Ship extends ObjectAttribute {
         this.component = new JLabel();
         move = "static";
 
-        this.dimension[0] = 40;
-        this.dimension[1] = 60;
+        Ship.dimension[0] = 40;
+        Ship.dimension[1] = 60;
         
         delay = 7;
 
         java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        this.position[0] = (screenSize.width / 2) - (this.dimension[0] / 2);
-        this.position[1] = screenSize.height - (this.dimension[1] + 50);
+        Ship.position[0] = (screenSize.width / 2) - (Ship.dimension[0] / 2);
+        Ship.position[1] = screenSize.height - (Ship.dimension[1] + 50);
 
         imageIconFront = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\ship.png");
         imageIconLeft = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\shipLeft.png");
         imageIconRight = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\shipRight.png");
         imageIconDestroy = new ImageIcon("");
 
-        imageIconFront = new ImageIcon(imageIconFront.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
-        imageIconLeft = new ImageIcon(imageIconLeft.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
-        imageIconRight = new ImageIcon(imageIconRight.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
+        imageIconFront = new ImageIcon(imageIconFront.getImage().getScaledInstance(Ship.dimension[0], Ship.dimension[1], java.awt.Image.SCALE_SMOOTH));
+        imageIconLeft = new ImageIcon(imageIconLeft.getImage().getScaledInstance(Ship.dimension[0], Ship.dimension[1], java.awt.Image.SCALE_SMOOTH));
+        imageIconRight = new ImageIcon(imageIconRight.getImage().getScaledInstance(Ship.dimension[0], Ship.dimension[1], java.awt.Image.SCALE_SMOOTH));
 
-        this.component.setBounds(this.position[0], this.position[1], this.dimension[0], this.dimension[1]);
+        this.component.setBounds(Ship.position[0], Ship.position[1], Ship.dimension[0], Ship.dimension[1]);
         this.component.setIcon(imageIconFront);
     }
     

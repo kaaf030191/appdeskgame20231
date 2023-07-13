@@ -18,31 +18,23 @@ import javax.swing.JLabel;
  *
  * @author KAAF0
  */
-public class Asteroid extends ObjectAttribute implements Runnable {
+public class Projectil extends ObjectAttribute implements Runnable {
 
     public int[] position = {0, 0};
     public int[] dimension = {0, 0};
-    
-    private java.awt.Dimension screenSize = null;
 
-    public Asteroid() {
+    public Projectil() {
         this.component = new JLabel();
 
-        Random random = new Random();
+        this.dimension[0] = 20;
+        this.dimension[1] = 40;
 
-        int randomDimension = random.nextInt(70 - 20 + 1) + 20;
+        delay = 7;
 
-        this.dimension[0] = randomDimension;
-        this.dimension[1] = randomDimension;
+        this.position[0] = (Ship.position[0] + (Ship.dimension[0] / 2)) - (this.dimension[0] / 2) - 1;
+        this.position[1] = Ship.position[1];
 
-        delay = random.nextInt(30 - 20 + 1) + 20;
-
-        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        this.position[0] = random.nextInt((screenSize.width - this.dimension[0]) - 0 + 1) + 0;
-        this.position[1] = -90;
-
-        ImageIcon imageIcon = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\asteroid.png");
+        ImageIcon imageIcon = new ImageIcon("D:\\Multiple projects\\unamba-training\\appdeskgame20231\\images\\missile.png");
 
         imageIcon = new ImageIcon(imageIcon.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
 
@@ -51,12 +43,12 @@ public class Asteroid extends ObjectAttribute implements Runnable {
     }
 
     private void move() {
-        position[1] += 5;
+        position[1] -= 5;
         this.component.setBounds(position[0], position[1], dimension[0], dimension[1]);
     }
 
     public boolean isRemove() {
-        return screenSize.height + 100 < position[1];
+        return -50 > position[1];
     }
 
     @Override

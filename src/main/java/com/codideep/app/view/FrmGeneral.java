@@ -4,8 +4,12 @@
  */
 package com.codideep.app.view;
 
+import com.codideep.app.object.Projectil;
+import com.codideep.app.object.ProjectilAssociated;
 import com.codideep.app.object.Ship;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,8 +19,11 @@ import java.util.logging.Logger;
  */
 public class FrmGeneral extends javax.swing.JFrame {
 
+    public static List<ProjectilAssociated> listProjectilAssociated = new ArrayList<>();
+    
     /**
      * Creates new form FrmGeneral
+     *
      * @throws java.io.IOException
      */
     public FrmGeneral() throws IOException {
@@ -68,6 +75,20 @@ public class FrmGeneral extends javax.swing.JFrame {
 
             case 39:
                 Ship.move = "right";
+
+                break;
+
+            case 0x11:
+                Projectil projectil = new Projectil();
+                add(projectil.component);
+
+                repaint();
+
+                Thread thread = new Thread(projectil);
+
+                thread.start();
+                
+                listProjectilAssociated.add(new ProjectilAssociated(projectil, thread));
 
                 break;
 

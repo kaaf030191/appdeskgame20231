@@ -6,6 +6,7 @@ package com.codideep.app.process;
 
 import com.codideep.app.object.Asteroid;
 import com.codideep.app.object.AsteroidAssociated;
+import com.codideep.app.view.FrmGeneral;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class CreateProcess extends Thread {
     private JFrame frm = null;
     private List<AsteroidAssociated> listAsteroidAssociated = null;
     private int asteroidLength = 0;
+    private int projectilLength = 0;
 
     public CreateProcess(JFrame frm) {
         this.frm = frm;
@@ -32,6 +34,7 @@ public class CreateProcess extends Thread {
     public void run() {
         while (true) {
             asteroidLength = listAsteroidAssociated.size();
+            projectilLength = FrmGeneral.listProjectilAssociated.size();
             
             for (int i = 0; i < asteroidLength; i++) {
                 if (listAsteroidAssociated.get(i).getAsteroid().isRemove()) {
@@ -42,6 +45,18 @@ public class CreateProcess extends Thread {
                     listAsteroidAssociated.remove(i);
 
                     asteroidLength--;
+                }
+            }
+            
+            for (int i = 0; i < projectilLength; i++) {
+                if (FrmGeneral.listProjectilAssociated.get(i).getProjectil().isRemove()) {
+                    FrmGeneral.listProjectilAssociated.get(i).getThread().stop();
+                    frm.remove(FrmGeneral.listProjectilAssociated.get(i).getProjectil().component);
+                    FrmGeneral.listProjectilAssociated.get(i).setNull();
+
+                    FrmGeneral.listProjectilAssociated.remove(i);
+
+                    projectilLength--;
                 }
             }
 
