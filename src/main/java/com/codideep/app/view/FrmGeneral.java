@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class FrmGeneral extends javax.swing.JFrame {
 
     public static List<ProjectilAssociated> listProjectilAssociated = new ArrayList<>();
-    
+
     /**
      * Creates new form FrmGeneral
      *
@@ -78,29 +78,30 @@ public class FrmGeneral extends javax.swing.JFrame {
 
                 break;
 
-            case 0x11:
-                Projectil projectil = new Projectil();
-                add(projectil.component);
-
-                repaint();
-
-                Thread thread = new Thread(projectil);
-
-                thread.start();
-                
-                listProjectilAssociated.add(new ProjectilAssociated(projectil, thread));
-
-                break;
-
-            default:
-                Ship.move = "static";
+            case 17:
+                Projectil.createProjectil = true;
 
                 break;
         }
     }//GEN-LAST:event_formKeyPressed
 
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
-        Ship.move = "static";
+        switch (evt.getKeyCode()) {
+            case 37:
+                Ship.move = "static";
+
+                break;
+
+            case 39:
+                Ship.move = "static";
+
+                break;
+
+            case 17:
+                Projectil.createProjectil = false;
+
+                break;
+        }
     }//GEN-LAST:event_formKeyReleased
 
     /**

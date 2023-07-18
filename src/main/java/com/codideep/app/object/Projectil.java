@@ -6,9 +6,7 @@ package com.codideep.app.object;
 
 import com.codideep.app.generic.ObjectAttribute;
 import com.codideep.app.process.ShipProcess;
-import java.awt.Toolkit;
 import static java.lang.Thread.sleep;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -22,6 +20,9 @@ public class Projectil extends ObjectAttribute implements Runnable {
 
     public int[] position = {0, 0};
     public int[] dimension = {0, 0};
+
+    public static boolean createProjectil = false;
+    public boolean stopThread = false;
 
     public Projectil() {
         this.component = new JLabel();
@@ -51,9 +52,17 @@ public class Projectil extends ObjectAttribute implements Runnable {
         return -50 > position[1];
     }
 
+    public void setStopThread() {
+        this.stopThread = true;
+    }
+
     @Override
     public void run() {
         while (true) {
+            if (this.stopThread) {
+                return;
+            }
+
             move();
 
             try {

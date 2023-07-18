@@ -38,7 +38,7 @@ public class CreateProcess extends Thread {
             
             for (int i = 0; i < asteroidLength; i++) {
                 if (listAsteroidAssociated.get(i).getAsteroid().isRemove()) {
-                    listAsteroidAssociated.get(i).getThread().stop();
+                    listAsteroidAssociated.get(i).getAsteroid().setStopThread();
                     frm.remove(listAsteroidAssociated.get(i).getAsteroid().component);
                     listAsteroidAssociated.get(i).setNull();
 
@@ -50,7 +50,7 @@ public class CreateProcess extends Thread {
             
             for (int i = 0; i < projectilLength; i++) {
                 if (FrmGeneral.listProjectilAssociated.get(i).getProjectil().isRemove()) {
-                    FrmGeneral.listProjectilAssociated.get(i).getThread().stop();
+                    FrmGeneral.listProjectilAssociated.get(i).getProjectil().setStopThread();
                     frm.remove(FrmGeneral.listProjectilAssociated.get(i).getProjectil().component);
                     FrmGeneral.listProjectilAssociated.get(i).setNull();
 

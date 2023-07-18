@@ -4,10 +4,9 @@
  */
 package com.codideep.app.main;
 
-import com.codideep.app.object.Asteroid;
-import com.codideep.app.object.Projectil;
 import com.codideep.app.object.Ship;
 import com.codideep.app.process.CreateProcess;
+import com.codideep.app.process.ProjectilProcess;
 import com.codideep.app.process.ShipProcess;
 import com.codideep.app.view.FrmGeneral;
 import java.awt.Toolkit;
@@ -51,5 +50,6 @@ public class Main {
         new ShipProcess(ship).start();
         
         new CreateProcess(frmGeneral).start();
+        new ProjectilProcess(frmGeneral).start();
     }
 }

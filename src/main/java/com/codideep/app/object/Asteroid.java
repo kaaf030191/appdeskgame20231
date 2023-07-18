@@ -22,7 +22,9 @@ public class Asteroid extends ObjectAttribute implements Runnable {
 
     public int[] position = {0, 0};
     public int[] dimension = {0, 0};
-    
+
+    private boolean stopThread = false;
+
     private java.awt.Dimension screenSize = null;
 
     public Asteroid() {
@@ -59,9 +61,17 @@ public class Asteroid extends ObjectAttribute implements Runnable {
         return screenSize.height + 100 < position[1];
     }
 
+    public void setStopThread() {
+        this.stopThread = true;
+    }
+
     @Override
     public void run() {
         while (true) {
+            if (stopThread) {
+                return;
+            }
+
             move();
 
             try {
